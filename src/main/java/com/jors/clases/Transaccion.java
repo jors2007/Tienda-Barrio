@@ -1,9 +1,9 @@
-package com.jors;
+package com.jors.clases;
 
 import java.time.LocalDateTime;
 
 public abstract class Transaccion {
-    protected  double monto;
+    protected double monto;
     protected LocalDateTime fecha;
     protected String descripcion;
 

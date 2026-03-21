@@ -1,4 +1,4 @@
-package com.jors;
+package com.jors.clases;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class Balance {
         for (Venta venta: ventas){
             sumaVentas += venta.getMonto();
         }
-        double balanceNeto = sumaVentas - sumaVentas;
+        double balanceNeto = sumaGastos - sumaVentas;
         return balanceNeto;
     }
 }
