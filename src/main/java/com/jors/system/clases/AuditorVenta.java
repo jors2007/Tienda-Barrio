@@ -1,4 +1,4 @@
-package com.jors.system;
+package com.jors.system.clases;
 
 import java.util.ArrayList;
 import java.util.List;

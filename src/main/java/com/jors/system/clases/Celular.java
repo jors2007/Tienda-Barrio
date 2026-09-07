@@ -1,4 +1,4 @@
-package com.jors.system;
+package com.jors.system.clases;
 
 public class Celular extends DatoIndentificado{
 

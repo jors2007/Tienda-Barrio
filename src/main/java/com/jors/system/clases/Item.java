@@ -1,4 +1,4 @@
-package com.jors.system;
+package com.jors.system.clases;
 
 public abstract class Item {
     private int id;

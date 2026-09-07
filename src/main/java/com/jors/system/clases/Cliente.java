@@ -1,4 +1,4 @@
-package com.jors.system;
+package com.jors.system.clases;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ public class Cliente {
     private Cedula cedula;
     private Celular celular;
     private Direccion direccion;
-    private List<Venta> comprasRealizadas;
+    private final List<Venta> comprasRealizadas;
 
     public Cliente(int idCliente, String nombre, Cedula cedula, Celular celular, Direccion direccion,
             ArrayList<Venta> comprasRealizadas) {
@@ -29,20 +29,36 @@ public class Cliente {
         return nombre;
     }
 
+    public Cedula getCedula(){
+        return cedula;
+    }
+
+    public Celular getCelular(){
+        return celular;
+    }
+
+    public Direccion getDireccion(){
+        return direccion;
+    }
+
+    public void setCedula(Cedula nuevaCedula){
+        this.cedula = nuevaCedula;
+    }
+
+    public void setCelular(Celular nuevoCelular){
+        this.celular = nuevoCelular;
+    }
+
+    public void setDireccion(Direccion nuevaDireccion){
+        this.direccion = nuevaDireccion;
+    }
+
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setCedula(Cedula cedula) {
-        this.cedula = cedula;
-    }
-
-    public void setCelular(Celular celular) {
-        this.celular = celular;
     }
 
     public List<Venta> getComprasRealizadas() {

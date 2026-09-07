@@ -1,4 +1,4 @@
-package com.jors.system;
+package com.jors.system.clases;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

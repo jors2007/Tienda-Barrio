@@ -1,7 +1,7 @@
-package com.jors.system;
+package com.jors.system.clases;
 
 public abstract class DatoIndentificado {
-    private String valor;
+    private final String valor;
     
     protected DatoIndentificado(String valor,String mensajeError){
         if (valor == null || !esValida(valor)){
@@ -16,4 +16,5 @@ public abstract class DatoIndentificado {
     public String getValor(){
         return this.valor;
     }
+
 }
