@@ -1,6 +1,6 @@
-package com.jors.clases;
+package com.jors.system;
 
-public class Item {
+public abstract class Item {
     private int id;
     private String nombre;
     private Double precio;

@@ -1,4 +1,4 @@
-package com.jors.clases;
+package com.jors.system;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,8 @@ public class Cliente {
     private String nombre;
     private Cedula cedula;
     private Celular celular;
+    private String direccion;
+
     private List<Venta> comprasRealizadas = new ArrayList<>();
 
     public int getIdCliente() {
@@ -25,6 +27,9 @@ public class Cliente {
     public Celular getCelular() {
         return celular;
     }
+        public String getDireccion() {
+        return direccion;
+    }
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
@@ -40,5 +45,9 @@ public class Cliente {
 
     public void setCelular(Celular celular) {
         this.celular = celular;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

@@ -1,4 +1,4 @@
-package com.jors.clases;
+package com.jors.system;
 
 public interface Transaccion {
     public void realizarTransaccion(Item itemsEntrada);
