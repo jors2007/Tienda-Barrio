@@ -1,6 +1,5 @@
 package com.jors.system;
 
-
 public class Cedula extends DatoIndentificado{
 
     public Cedula(String valor) {

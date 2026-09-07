@@ -8,9 +8,18 @@ public class Cliente {
     private String nombre;
     private Cedula cedula;
     private Celular celular;
-    private String direccion;
+    private Direccion direccion;
+    private List<Venta> comprasRealizadas;
 
-    private List<Venta> comprasRealizadas = new ArrayList<>();
+    public Cliente(int idCliente, String nombre, Cedula cedula, Celular celular, Direccion direccion,
+            ArrayList<Venta> comprasRealizadas) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.celular = celular;
+        this.direccion = direccion;
+        this.comprasRealizadas = comprasRealizadas;
+    }
 
     public int getIdCliente() {
         return idCliente;
@@ -18,17 +27,6 @@ public class Cliente {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public Cedula getCedula() {
-        return cedula;
-    }
-
-    public Celular getCelular() {
-        return celular;
-    }
-        public String getDireccion() {
-        return direccion;
     }
 
     public void setIdCliente(int idCliente) {
@@ -47,7 +45,8 @@ public class Cliente {
         this.celular = celular;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public List<Venta> getComprasRealizadas() {
+        return new ArrayList<>(this.comprasRealizadas);
     }
+
 }

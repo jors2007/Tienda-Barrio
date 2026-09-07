@@ -1,7 +1,7 @@
 package com.jors.system;
 
 public abstract class DatoIndentificado {
-    public String valor;
+    private String valor;
     
     protected DatoIndentificado(String valor,String mensajeError){
         if (valor == null || !esValida(valor)){
