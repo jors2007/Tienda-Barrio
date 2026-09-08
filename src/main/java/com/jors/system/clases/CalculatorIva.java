@@ -1,8 +1,8 @@
 package com.jors.system.clases;
 
 public class CalculatorIva {
-    public Double calcularPrecioConIva(Item item){
+    public static Double calcularPrecioConIva(Item item){
     Double iva = 0.15;
-    return item.getPrecio() * (1 + iva);
+    return item.getSubTotal() * (1 + iva);
     }
 }

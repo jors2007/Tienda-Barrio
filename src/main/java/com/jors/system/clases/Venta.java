@@ -7,11 +7,12 @@ import java.util.List;
 public class Venta implements Transaccion{
     private int idVenta;    
     private LocalDate fecha;
-    private List<Item> items = new ArrayList<>();
+    private List<Item> items;
 
     public Venta(int idVenta) {
         this.fecha = LocalDate.now();
         this.idVenta = idVenta;
+        this.items = new ArrayList<>();
     }
 
     public int getIdVenta() {
@@ -32,7 +33,7 @@ public class Venta implements Transaccion{
         return !items.isEmpty();
     }        
 
-    public List<Item> obtenerListaItems(){
+    public List<Item> getItems(){
         return new ArrayList<>(this.items);
     }
 }

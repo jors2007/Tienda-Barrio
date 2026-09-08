@@ -1,43 +1,21 @@
 package com.jors.system.clases;
 
-public abstract class Item {
-    private int id;
-    private String nombre;
-    private Double precio;
-    private int stock;  
-
-    public Item(int id, String nombre, Double precio, int stock) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
+public class Item {
+    private Producto producto;
+    private final int cantidad;
+    private final double precioUnitario;
+    
+    public Item(Producto producto, int cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.precioUnitario = producto.getPrecio();
     }
 
-    public Double getPrecio(){
-        return precio;
+    public double getSubTotal(){
+        return cantidad * precioUnitario;
     }
-
-    public int getStock(){
-        return stock;
-    }
-
-    public String getString(){
-        return nombre;
-    }
-
-    public int getId(){
-        return id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setPrecio(Double precio) {
-        this.precio = precio;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
+    
+    public double getTotal(){
+        return CalculatorIva.calcularPrecioConIva(this);
     }
 }
