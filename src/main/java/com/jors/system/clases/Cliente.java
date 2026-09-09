@@ -4,25 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
-    private int idCliente;
-    private String nombre;
     private Cedula cedula;
+    private String nombre;
     private Celular celular;
     private Direccion direccion;
     private final List<Venta> comprasRealizadas;
 
-    public Cliente(int idCliente, String nombre, Cedula cedula, Celular celular, Direccion direccion,
+    public Cliente(Cedula cedula, String nombre, Celular celular, Direccion direccion,
             ArrayList<Venta> comprasRealizadas) {
-        this.idCliente = idCliente;
         this.nombre = nombre;
         this.cedula = cedula;
         this.celular = celular;
         this.direccion = direccion;
         this.comprasRealizadas = comprasRealizadas;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
     }
 
     public String getNombre() {
@@ -53,16 +47,18 @@ public class Cliente {
         this.direccion = nuevaDireccion;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public List<Venta> getComprasRealizadas() {
+    public List<Venta> obtenerComprasRealizadas() {
         return new ArrayList<>(this.comprasRealizadas);
     }
 
+    public void agregarVenta(Venta venta){
+        if (venta == null){
+            throw new IllegalArgumentException("No se pueden agregar ventas nulas");
+        }
+        this.comprasRealizadas.add(venta);
+    }
 }

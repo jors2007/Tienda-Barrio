@@ -19,7 +19,11 @@ public class Inventario {
         return inventario;
     }
 
-    public List<Producto> getProductos(){
+    public List<Producto> obtenerProductos(){
         return new ArrayList<>(this.productos);
+    }
+
+    public void agregarProducto(Producto producto){
+
     }
 }

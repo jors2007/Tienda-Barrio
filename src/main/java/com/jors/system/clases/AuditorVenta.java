@@ -18,7 +18,7 @@ public class AuditorVenta {
         return auditor;
     }
 
-    public List<Venta> getListaVentas(){
+    public List<Venta> obtenerListaVentas(){
         return new ArrayList<>(this.transacciones);
     }
 
