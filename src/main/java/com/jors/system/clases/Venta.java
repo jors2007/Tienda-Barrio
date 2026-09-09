@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Venta implements Transaccion{
+public class Venta {
     private int idVenta;    
     private LocalDate fecha;
     private List<Item> items;
@@ -23,16 +23,10 @@ public class Venta implements Transaccion{
         this.idVenta = idVenta;
     }
 
-    @Override
-    public void realizarTransaccion(Item item){
+    public void agregarItem(Item item){
         this.items.add(item);
     }
-
-    @Override
-    public boolean verificarTransaccion(){
-        return !items.isEmpty();
-    }        
-
+   
     public List<Item> getItems(){
         return new ArrayList<>(this.items);
     }
