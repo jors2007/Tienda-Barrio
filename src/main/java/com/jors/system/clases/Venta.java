@@ -42,5 +42,12 @@ public class Venta {
         }
         return total;
     }
+
+    public void eliminarItemPorIndice(int indice){
+        if (indice < 0 || indice > items.size()){
+            throw new IndexOutOfBoundsException("Índice de ítem inválido: " + indice);
+        } 
+        items.remove(indice);
+    }
 }
     
