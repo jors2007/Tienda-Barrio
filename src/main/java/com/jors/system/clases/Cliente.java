@@ -6,14 +6,16 @@ import java.util.List;
 public class Cliente {
     private Cedula cedula;
     private String nombre;
+    private String apellido;
     private Celular celular;
     private Direccion direccion;
     private final List<Venta> comprasRealizadas;
 
-    public Cliente(Cedula cedula, String nombre, Celular celular, Direccion direccion,
+    public Cliente(Cedula cedula, String nombre, String apellido, Celular celular, Direccion direccion,
             ArrayList<Venta> comprasRealizadas) {
         this.nombre = nombre;
         this.cedula = cedula;
+        this.apellido = apellido;
         this.celular = celular;
         this.direccion = direccion;
         this.comprasRealizadas = comprasRealizadas;
@@ -33,6 +35,10 @@ public class Cliente {
 
     public Direccion getDireccion(){
         return direccion;
+    }
+
+    public String getApellido(){
+        return apellido;
     }
 
     public void setCedula(Cedula nuevaCedula){
@@ -55,9 +61,9 @@ public class Cliente {
         return new ArrayList<>(this.comprasRealizadas);
     }
 
-    public void agregarVenta(Venta venta){
+    public void agregarCompra(Venta venta){
         if (venta == null){
-            throw new IllegalArgumentException("No se pueden agregar ventas nulas");
+            throw new IllegalArgumentException("No se pueden agregar una compra nula");
         }
         this.comprasRealizadas.add(venta);
     }

@@ -3,7 +3,7 @@ package com.jors.system.clases;
 public class Celular extends DatoIndentificado{
 
     public Celular(String valor){
-        super(valor,"Celular invalida");
+        super(valor,"Celular invalido");
     }
 
     @Override

@@ -24,6 +24,9 @@ public class Inventario {
     }
 
     public void agregarProducto(Producto producto){
-
+        if (producto == null){
+            throw new IllegalArgumentException("No se puede agregar un producto vacio");
+        }
+        this.productos.add(producto);
     }
 }
