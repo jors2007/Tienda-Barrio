@@ -2,6 +2,7 @@ package com.jors.system.clases;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Venta {
@@ -24,11 +25,22 @@ public class Venta {
     }
 
     public void agregarItem(Item item){
+        if (item == null){
+            throw new IllegalArgumentException("No se pueden agregar un item vacio");
+        }
         this.items.add(item);
     }
    
     public List<Item> getItems(){
-        return new ArrayList<>(this.items);
+        return Collections.unmodifiableList(items);
+    }
+
+    public double obtenerTotalVenta(){
+        double total = 0;
+        for(Item item: items){
+            total += item.getTotal();
+        }
+        return total;
     }
 }
     

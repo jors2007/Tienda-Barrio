@@ -14,7 +14,7 @@ public abstract class DatoIndentificado {
     public abstract boolean esValida(String valor);
 
     public String getValor(){
-        return this.valor;
+        return valor;
     }
 
 }

@@ -9,7 +9,6 @@ public enum Categoria {
     private final String prefijo;
     private final String descripcion;
 
-    // El constructor de un enum siempre es private por defecto
     Categoria(String prefijo, String descripcion) {
         this.prefijo = prefijo;
         this.descripcion = descripcion;

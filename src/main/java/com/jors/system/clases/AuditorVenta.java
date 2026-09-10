@@ -1,10 +1,11 @@
 package com.jors.system.clases;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AuditorVenta {
-    private List<Venta> transacciones;
+    private final List<Venta> transacciones;
     private static AuditorVenta auditor;
 
     private AuditorVenta(){
@@ -19,11 +20,13 @@ public class AuditorVenta {
     }
 
     public List<Venta> obtenerListaVentas(){
-        return new ArrayList<>(this.transacciones);
+        return Collections.unmodifiableList(transacciones);
     }
 
-    // Por poner la logica dentor de esta
-    public void introducirVenta(List<Venta> transacciones){
-        
+    public void introducirVenta(Venta venta){
+        if (venta == null){
+            throw new IllegalArgumentException("No se puede agregar una venta nula");
+        }
+        this.transacciones.add(venta);
     }
 } 

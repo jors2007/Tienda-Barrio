@@ -1,6 +1,7 @@
 package com.jors.system.clases;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // Aqui se usa singleton
@@ -20,7 +21,7 @@ public class Inventario {
     }
 
     public List<Producto> obtenerProductos(){
-        return new ArrayList<>(this.productos);
+        return Collections.unmodifiableList(productos);
     }
 
     public void agregarProducto(Producto producto){

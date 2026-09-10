@@ -1,6 +1,7 @@
 package com.jors.system.clases;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cliente {
@@ -21,8 +22,12 @@ public class Cliente {
         this.comprasRealizadas = comprasRealizadas;
     }
 
-    public String getNombre() {
+    public String getNombre(){
         return nombre;
+    }
+
+    public String apellido(){
+        return apellido;
     }
 
     public Cedula getCedula(){
@@ -35,10 +40,6 @@ public class Cliente {
 
     public Direccion getDireccion(){
         return direccion;
-    }
-
-    public String getApellido(){
-        return apellido;
     }
 
     public void setCedula(Cedula nuevaCedula){
@@ -57,8 +58,12 @@ public class Cliente {
         this.nombre = nombre;
     }
 
+        public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public List<Venta> obtenerComprasRealizadas() {
-        return new ArrayList<>(this.comprasRealizadas);
+        return Collections.unmodifiableList(comprasRealizadas);
     }
 
     public void agregarCompra(Venta venta){
