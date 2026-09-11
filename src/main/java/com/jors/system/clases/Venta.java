@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Venta {
-    private int idVenta;    
-    private LocalDate fecha;
-    private List<Item> items;
+    private final int idVenta;
+    private final LocalDate fecha;
+    private final List<Item> items;
 
     public Venta(int idVenta) {
         this.fecha = LocalDate.now();
@@ -20,34 +20,34 @@ public class Venta {
         return idVenta;
     }
 
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public void agregarItem(Item item){
-        if (item == null){
-            throw new IllegalArgumentException("No se pueden agregar un item vacio");
+    public void agregarItem(Item item) {
+        if (item == null) {
+            throw new IllegalArgumentException("No se pueden agregar un item vacío");
         }
         this.items.add(item);
     }
-   
-    public List<Item> getItems(){
+
+    public List<Item> getItems() {
         return Collections.unmodifiableList(items);
     }
 
-    public double obtenerTotalVenta(){
+    public double obtenerTotalVenta() {
         double total = 0;
-        for(Item item: items){
+        for (Item item : items) {
             total += item.getTotal();
         }
         return total;
     }
 
-    public void eliminarItemPorIndice(int indice){
-        if (indice < 0 || indice > items.size()){
+    public void eliminarItemPorIndice(int indice) {
+        if (indice < 0 || indice > items.size()) {
             throw new IndexOutOfBoundsException("Índice de ítem inválido: " + indice);
-        } 
+        }
         items.remove(indice);
     }
 }
-    
+
