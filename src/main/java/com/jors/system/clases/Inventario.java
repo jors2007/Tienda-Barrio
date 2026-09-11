@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// Aqui se usa singleton
 public class Inventario {
     private final List<Producto> productos;
     private static Inventario inventario;

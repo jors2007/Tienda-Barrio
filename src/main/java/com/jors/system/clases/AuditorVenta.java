@@ -19,7 +19,7 @@ public class AuditorVenta {
         return auditor;
     }
 
-    public List<Venta> obtenerListaVentas(){
+    public List<Venta> obtenerListaVenta(){
         return Collections.unmodifiableList(transacciones);
     }
 
