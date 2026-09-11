@@ -55,6 +55,6 @@ public class Main {
                 new ArrayList<>(List.of(venta))
         );
 
-        System.out.println(new Gson().toJson(cliente));
+        System.out.println(new Gson.toJson(cliente));
     }
 }
