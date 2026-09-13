@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Cliente {
+    private int id = 0;
     private Cedula cedula;
     private String nombre;
     private String apellido;
@@ -22,24 +23,36 @@ public class Cliente {
         this.comprasRealizadas = comprasRealizadas;
     }
 
+    public int getId(){
+        return id;
+    }
+
     public String getNombre(){
         return nombre;
     }
 
-    public String apellido(){
+    public String getApellido(){
         return apellido;
     }
 
-    public Cedula getCedula(){
-        return cedula;
+    public String getCedula(){
+        return cedula.getValor();
     }
 
-    public Celular getCelular(){
-        return celular;
+    public String getCelular(){
+        return celular.getValor();
     }
 
-    public Direccion getDireccion(){
-        return direccion;
+    public String getDireccionPrimaria(){
+        return direccion.getCallePrincipal();
+    }
+
+    public String getDireccionSecundaria(){
+        return direccion.getCalleSecundaria();
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public void setCedula(Cedula nuevaCedula){
