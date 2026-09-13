@@ -8,6 +8,6 @@ public class Cedula extends DatoIndentificado{
 
     @Override
     public boolean esValida(String valor) {
-       return valor.matches("//d{10}");
+       return valor.matches("\\d{10}");
     }
 }

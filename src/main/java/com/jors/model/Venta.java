@@ -6,14 +6,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class Venta {
-    private final int idVenta;
+    private int idVenta = 0;
     private final LocalDate fecha;
     private final List<Item> items;
     private final Cliente cliente;
 
-    public Venta(int idVenta, Cliente cliente) {
+    public Venta(Cliente cliente) {
         this.fecha = LocalDate.now();
-        this.idVenta = idVenta;
         this.items = new ArrayList<>();
         this.cliente = cliente;
     }
@@ -54,6 +53,10 @@ public class Venta {
             throw new IndexOutOfBoundsException("Índice de ítem inválido: " + indice);
         }
         items.remove(indice);
+    }
+
+    public void setId(int id){
+        this.idVenta = id;
     }
 }
 
