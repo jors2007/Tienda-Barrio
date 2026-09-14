@@ -11,23 +11,21 @@ import com.jors.model.Producto;
 
 public class InventarioDAO {
     public void insertarProducto(Producto producto) throws SQLException{
-        String sql = "INSERT INTO inventario(nombre, precio, descripcion, categoria, stock) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO inventario(codigo, nombre, precio, descripcion, categoria, stock) VALUES (?,?,?,?,?,?)";
+
         try(Connection con = ConexionDB.obtenerConexion();
             PreparedStatement ps = con.prepareStatement(sql,Statement.KEEP_CURRENT_RESULT)){
-                
+                ps.setString(1,producto.getCodigo());
+                ps.setString(2,producto.getNombre());
+                ps.setDouble(3, producto.getPrecio());
+                ps.setString(4,producto.getDescripcion());
+                ps.setString(5, producto.getCategoria().name());
+                ps.setInt(6, producto.getStock());
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
                 int codigoGenerado = rs.getInt(1);
                 producto.setId(codigoGenerado);
             }
         }
-
-        /*
-    private String codigo; // El codigo llevara el una categoria, el prefijo y el numero de creación (codigo nemotecnico) prefijo + "-" + String.format("%04d", numero)
-    private String nombre;
-    private double precio;
-    private String descripcion;
-    private final Categoria categoria;
-    private int stock; */
     }
 }
