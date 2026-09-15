@@ -42,7 +42,7 @@ public class VentaDAO {
     }
 
     public void eliminar(Venta venta){
-
+        
     }
 
 }

@@ -1,11 +1,11 @@
 package com.jors.model;
 
-public class Item {
+public class DetalleVenta {
     private final Producto producto;
     private int cantidad;
     private final double precioUnitario;
     
-    public Item(Producto producto, int cantidad) {
+    public DetalleVenta(Producto producto, int cantidad) {
         if (producto == null){
             throw new IllegalArgumentException("No se ha ingresado ningun producto");
         }

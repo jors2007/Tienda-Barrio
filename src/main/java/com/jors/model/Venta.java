@@ -9,7 +9,7 @@ public class Venta {
     private Integer id;
     private String codigo;
     private final LocalDate fecha;
-    private final List<Item> items;
+    private final List<DetalleVenta> items;
     private final Cliente cliente;
 
     public Venta(Cliente cliente){
@@ -46,20 +46,20 @@ public class Venta {
         return cliente;
     }
 
-    public void agregarItem(Item item) {
+    public void agregarItem(DetalleVenta item) {
         if (item == null) {
             throw new IllegalArgumentException("No se pueden agregar un item vacío");
         }
         this.items.add(item);
     }
 
-    public List<Item> getItems() {
+    public List<DetalleVenta> getItems() {
         return Collections.unmodifiableList(items);
     }
 
     public double obtenerTotalVenta() {
         double total = 0;
-        for (Item item : items) {
+        for (DetalleVenta item : items) {
             total += item.getTotal();
         }
         return total;
