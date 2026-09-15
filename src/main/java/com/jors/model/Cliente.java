@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Cliente {
-    private int id = 0;
+    private Integer id;
     private Cedula cedula;
     private String nombre;
     private String apellido;
@@ -13,8 +13,21 @@ public class Cliente {
     private Direccion direccion;
     private final List<Venta> comprasRealizadas;
 
+    // Constructor que sirve para insertar datos de la base de datos
     public Cliente(Cedula cedula, String nombre, String apellido, Celular celular, Direccion direccion,
             ArrayList<Venta> comprasRealizadas) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.apellido = apellido;
+        this.celular = celular;
+        this.direccion = direccion;
+        this.comprasRealizadas = comprasRealizadas;
+    }
+
+    // Constructor que sirve para leer los datos de la base de datos
+    public Cliente(Integer id,Cedula cedula, String nombre, String apellido, Celular celular, Direccion direccion,
+            ArrayList<Venta> comprasRealizadas) {
+        this.id = id;
         this.nombre = nombre;
         this.cedula = cedula;
         this.apellido = apellido;

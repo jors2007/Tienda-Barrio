@@ -5,12 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.jors.model.ConexionDB;
 import com.jors.model.Producto;
 
 public class InventarioDAO {
-    public void insertarProducto(Producto producto) throws SQLException{
+    public void insertar(Producto producto) throws SQLException{
         String sql = "INSERT INTO inventario(codigo, nombre, precio, descripcion, categoria, stock) VALUES (?,?,?,?,?,?)";
 
         try(Connection con = ConexionDB.obtenerConexion();
@@ -27,5 +29,22 @@ public class InventarioDAO {
                 producto.setId(codigoGenerado);
             }
         }
+    }
+
+        public List<Producto> obtenerTodas(){
+        List<Producto> productos = new ArrayList<>();
+
+
+
+        
+        return productos;
+    }
+
+    public void actualizar(Producto producto){
+
+    }
+
+    public void eliminar(Producto producto){
+
     }
 }

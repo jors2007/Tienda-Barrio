@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Venta {
-    private int idVenta = 0;
+    private Integer id;
     private final LocalDate fecha;
     private final List<Item> items;
     private final Cliente cliente;
@@ -17,8 +17,15 @@ public class Venta {
         this.cliente = cliente;
     }
 
-    public int getIdVenta() {
-        return idVenta;
+    public Venta(Integer id,Cliente cliente){
+        this.id = id;
+        this.fecha = LocalDate.now();
+        this.items = new ArrayList<>();
+        this.cliente = cliente;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public LocalDate getFecha() {
@@ -55,8 +62,8 @@ public class Venta {
         items.remove(indice);
     }
 
-    public void setId(int id){
-        this.idVenta = id;
+    public void setId(Integer id){
+        this.id = id;
     }
 }
 

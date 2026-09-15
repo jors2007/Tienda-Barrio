@@ -5,13 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.jors.model.Cliente;
 import com.jors.model.ConexionDB;
 
 
 public class ClienteDAO {
-    public void insertarCliente(Cliente cliente) throws SQLException{
+    public void insertar(Cliente cliente) throws SQLException{
         String sql = "INSERT INTO cliente (cedula, nombre, apellido, celular, direccion_principal, direccion_secundaria) VALUES (?,?,?,?,?,?)";
         try(Connection con = ConexionDB.obtenerConexion();
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
@@ -28,5 +30,22 @@ public class ClienteDAO {
                 cliente.setId(idGenerado);
             }
         } 
+    }
+
+        public List<Cliente> obtenerTodas() throws SQLException{
+        List<Cliente> clientes = new ArrayList<>();
+
+
+
+        
+        return clientes;
+    }
+
+    public void actualizar(Cliente cliente){
+
+    }
+
+    public void eliminar(Cliente cliente){
+
     }
 }

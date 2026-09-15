@@ -1,7 +1,7 @@
 package com.jors.model;
 
 public class Producto {
-    private int id = 0;
+    private Integer id;
     private String codigo; // El codigo llevara el una categoria, el prefijo y el numero de creación (codigo nemotecnico) prefijo + "-" + String.format("%04d", numero)
     private String nombre;
     private double precio;
@@ -10,6 +10,16 @@ public class Producto {
     private int stock;
 
     public Producto(String codigo, String nombre, double precio, Categoria categoria, String descripcion,int stock){
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.nombre = nombre;
+        actualizarPrecio(precio);
+        this.categoria = categoria;
+        this.stock = stock;
+    }
+
+        public Producto(Integer id, String codigo, String nombre, double precio, Categoria categoria, String descripcion,int stock){
+        this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.nombre = nombre;
