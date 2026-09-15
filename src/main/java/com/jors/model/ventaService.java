@@ -2,20 +2,26 @@ package com.jors.model;
 
 import java.util.List;
 
-// esta clase segun esta mal, ya mismo la observo
-public class ventaService {
-    public static void realizarVenta(Inventario inventario,Item item){
+public class VentaService {
+    public void realizarVenta(Inventario inventario,Item item){
+        if (inventario == null || item == null){
+            throw new IllegalArgumentException("No se puede realizar la venta con elementos vacios");
+        }
+        String nombreproductoVendido = item.getNombreProducto();
         List<Producto> productos = inventario.getProductos();
-        String codigoProducto = item.getCodigoProducto();
+        boolean encontrado = false;
         for(Producto producto: productos){
-            if(codigoProducto.equals(producto.getCodigo())){
-                int stockProducto = producto.getStock();
-                int cantidadAVender = item.getCantidad();
-                if (cantidadAVender > stockProducto){
-                    throw new IllegalArgumentException("No se pueden vender más cantidad que el stock");
-                } 
-                producto.setStock(stockProducto - cantidadAVender);
+            String nombreProducto = producto.getNombre();
+            if (nombreProducto.equals(nombreproductoVendido)){
+                int cantidadVendida = item.getCantidad();
+                producto.reducirStock(cantidadVendida);
+                encontrado = true;
+                break;
             }
         }
+        if(!encontrado){
+            throw new IllegalArgumentException("No se ha podido encontrar ese producto");
+        }
+        // Aqui va las partes del DAO donde se actualiza todo
     }   
 }

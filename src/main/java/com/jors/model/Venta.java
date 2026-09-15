@@ -7,25 +7,35 @@ import java.util.List;
 
 public class Venta {
     private Integer id;
+    private String codigo;
     private final LocalDate fecha;
     private final List<Item> items;
     private final Cliente cliente;
 
-    public Venta(Cliente cliente) {
+    public Venta(Cliente cliente){
         this.fecha = LocalDate.now();
         this.items = new ArrayList<>();
         this.cliente = cliente;
     }
 
-    public Venta(Integer id,Cliente cliente){
+    public Venta(Integer id, Cliente cliente, String codigo){
         this.id = id;
+        this.codigo = codigo;
         this.fecha = LocalDate.now();
         this.items = new ArrayList<>();
         this.cliente = cliente;
+    }
+
+    public void asignarCodigo(){
+        this.codigo = String.format("FAC-&06d",id);
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getCodigo(){
+        return codigo;
     }
 
     public LocalDate getFecha() {

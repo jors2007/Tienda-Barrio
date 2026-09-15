@@ -9,8 +9,8 @@ public class Producto {
     private final Categoria categoria;
     private int stock;
 
-    public Producto(String codigo, String nombre, double precio, Categoria categoria, String descripcion,int stock){
-        this.codigo = codigo;
+
+    public Producto(String nombre, double precio, Categoria categoria, String descripcion,int stock){
         this.descripcion = descripcion;
         this.nombre = nombre;
         actualizarPrecio(precio);
@@ -18,7 +18,7 @@ public class Producto {
         this.stock = stock;
     }
 
-        public Producto(Integer id, String codigo, String nombre, double precio, Categoria categoria, String descripcion,int stock){
+    public Producto(Integer id, String codigo, String nombre, double precio, Categoria categoria, String descripcion,int stock){
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -27,9 +27,26 @@ public class Producto {
         this.categoria = categoria;
         this.stock = stock;
     }
+
+    public void asignarCodigo(){
+        String preFijo = categoria.getPrefijo();
+        this.codigo = String.format(preFijo+"-%06d",id);
+    }
+
+    public void reducirStock(int cantidadVendida){
+        if (cantidadVendida <= 0){
+            throw new IllegalArgumentException("No se puede reducir stock con una cantidad negativa");
+        }
+        if (cantidadVendida > this.stock){
+            throw new IllegalArgumentException("No se puede vender más que el stock");
+        }
+        this.stock -= cantidadVendida;
+    }
+
     public int getId(){
         return id;
     }
+
     public String getCodigo() {
         return codigo;
     }
@@ -54,12 +71,15 @@ public class Producto {
         return stock;
     }
 
-
     public final void actualizarPrecio(double precio) {
         if (precio <= 0){
             throw new IllegalArgumentException("No se pueden introducir precios negativos");
         }
         this.precio = precio;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public void setNombre(String nombre) {
@@ -76,9 +96,5 @@ public class Producto {
 
     public void setStock(int stock) {
         this.stock = stock;
-    }
-
-    public void setId(int id){
-        this.id = id;
     }
 }
