@@ -32,7 +32,7 @@ public class ClienteDAO {
         } 
     }
 
-        public List<Cliente> obtenerTodas() throws SQLException{
+    public List<Cliente> obtenerTodas() throws SQLException{
         List<Cliente> clientes = new ArrayList<>();
 
 

@@ -9,12 +9,12 @@ public class Venta {
     private Integer id;
     private String codigo;
     private final LocalDate fecha;
-    private final List<DetalleVenta> items;
+    private final List<DetalleVenta> detalleVentas;
     private final Cliente cliente;
 
     public Venta(Cliente cliente){
         this.fecha = LocalDate.now();
-        this.items = new ArrayList<>();
+        this.detalleVentas = new ArrayList<>();
         this.cliente = cliente;
     }
 
@@ -22,7 +22,7 @@ public class Venta {
         this.id = id;
         this.codigo = codigo;
         this.fecha = LocalDate.now();
-        this.items = new ArrayList<>();
+        this.detalleVentas = new ArrayList<>();
         this.cliente = cliente;
     }
 
@@ -50,26 +50,26 @@ public class Venta {
         if (item == null) {
             throw new IllegalArgumentException("No se pueden agregar un item vacío");
         }
-        this.items.add(item);
+        this.detalleVentas.add(item);
     }
 
     public List<DetalleVenta> getItems() {
-        return Collections.unmodifiableList(items);
+        return Collections.unmodifiableList(detalleVentas);
     }
 
     public double obtenerTotalVenta() {
         double total = 0;
-        for (DetalleVenta item : items) {
-            total += item.getTotal();
+        for (DetalleVenta detalleVenta : detalleVentas) {
+            total += detalleVenta.getTotal();
         }
         return total;
     }
 
     public void eliminarItemPorIndice(int indice) {
-        if (indice < 0 || indice > items.size()) {
+        if (indice < 0 || indice > detalleVentas.size()) {
             throw new IndexOutOfBoundsException("Índice de ítem inválido: " + indice);
         }
-        items.remove(indice);
+        detalleVentas.remove(indice);
     }
 
     public void setId(Integer id){
