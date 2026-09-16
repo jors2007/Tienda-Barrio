@@ -1,4 +1,4 @@
-package com.jors.model;
+package com.jors.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

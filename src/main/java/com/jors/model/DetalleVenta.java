@@ -1,10 +1,13 @@
 package com.jors.model;
 
+import java.math.BigDecimal;
+
 public class DetalleVenta {
+    private Integer id;
     private final Producto producto;
     private int cantidad;
-    private final double precioUnitario;
-    
+    private final BigDecimal precioUnitario;
+
     public DetalleVenta(Producto producto, int cantidad) {
         if (producto == null){
             throw new IllegalArgumentException("No se ha ingresado ningun producto");
@@ -33,11 +36,11 @@ public class DetalleVenta {
         this.cantidad = cantidad;
     }
 
-    public double getSubTotal(){
-        return cantidad * precioUnitario;
+    public BigDecimal getSubTotal(){
+        return precioUnitario.multiply(BigDecimal.valueOf(cantidad));
     }
     
-    public double getTotal(){
+    public BigDecimal getTotal(){
         return CalculatorIva.calcularPrecioConIva(this);
     }
 }

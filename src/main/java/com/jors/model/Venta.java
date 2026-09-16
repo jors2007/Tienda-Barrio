@@ -1,5 +1,6 @@
 package com.jors.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,10 +58,10 @@ public class Venta {
         return Collections.unmodifiableList(detalleVentas);
     }
 
-    public double obtenerTotalVenta() {
-        double total = 0;
+    public BigDecimal obtenerTotalVenta() {
+        BigDecimal total = new BigDecimal("0");
         for (DetalleVenta detalleVenta : detalleVentas) {
-            total += detalleVenta.getTotal();
+            total = total.add(detalleVenta.getTotal());
         }
         return total;
     }

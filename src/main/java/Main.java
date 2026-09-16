@@ -6,6 +6,8 @@ public class Main {
         Producto producto = new Producto("lapiz", 0.30, Categoria.UTILES, "El lapiz de la marca Big", 30);
         producto.setId(1);
         producto.asignarCodigo();
-        System.out.println(producto.getCodigo()); 
+        String codigoProducto = producto.getCodigo();
+        System.out.println(codigoProducto);
+        System.out.println(codigoProducto.length());
     }
 }

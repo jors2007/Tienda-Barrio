@@ -1,10 +1,12 @@
 package com.jors.model;
 
+import java.math.BigDecimal;
+
 public class Producto {
     private Integer id;
-    private String codigo; // El codigo llevara el una categoria, el prefijo y el numero de creación (codigo nemotecnico) prefijo + "-" + String.format("%04d", numero)
+    private String codigo;
     private String nombre;
-    private double precio;
+    private BigDecimal precio;
     private String descripcion;
     private final Categoria categoria;
     private int stock;
@@ -55,7 +57,7 @@ public class Producto {
         return nombre;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
@@ -75,7 +77,8 @@ public class Producto {
         if (precio <= 0){
             throw new IllegalArgumentException("No se pueden introducir precios negativos");
         }
-        this.precio = precio;
+        BigDecimal precioDecimal = BigDecimal.valueOf(precio);
+        this.precio = precioDecimal;
     }
 
     public void setId(int id){

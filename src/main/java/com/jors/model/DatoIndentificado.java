@@ -16,5 +16,4 @@ public abstract class DatoIndentificado {
     public String getValor(){
         return valor;
     }
-
 }

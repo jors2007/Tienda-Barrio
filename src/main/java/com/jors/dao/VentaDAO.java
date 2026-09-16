@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jors.model.Cliente;
-import com.jors.model.ConexionDB;
 import com.jors.model.Venta;
 
 public class VentaDAO {
