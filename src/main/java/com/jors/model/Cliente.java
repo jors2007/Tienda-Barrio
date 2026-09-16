@@ -1,8 +1,6 @@
 package com.jors.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Cliente {
     private Integer id;
@@ -11,29 +9,24 @@ public class Cliente {
     private String apellido;
     private Celular celular;
     private Direccion direccion;
-    private final List<Venta> comprasRealizadas;
 
     // Constructor que sirve para insertar datos de la base de datos
-    public Cliente(Cedula cedula, String nombre, String apellido, Celular celular, Direccion direccion,
-            ArrayList<Venta> comprasRealizadas) {
+    public Cliente(Cedula cedula, String nombre, String apellido, Celular celular, Direccion direccion){
         this.nombre = nombre;
-        this.cedula = cedula;
         this.apellido = apellido;
+        this.cedula = cedula;
         this.celular = celular;
         this.direccion = direccion;
-        this.comprasRealizadas = comprasRealizadas;
     }
 
     // Constructor que sirve para leer los datos de la base de datos
-    public Cliente(Integer id,Cedula cedula, String nombre, String apellido, Celular celular, Direccion direccion,
-            ArrayList<Venta> comprasRealizadas) {
+    public Cliente(Integer id,Cedula cedula, String nombre, String apellido, Celular celular, Direccion direccion){
         this.id = id;
         this.nombre = nombre;
-        this.cedula = cedula;
         this.apellido = apellido;
+        this.cedula = cedula;
         this.celular = celular;
         this.direccion = direccion;
-        this.comprasRealizadas = comprasRealizadas;
     }
 
     public int getId(){
@@ -86,16 +79,5 @@ public class Cliente {
 
         public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public List<Venta> obtenerComprasRealizadas() {
-        return Collections.unmodifiableList(comprasRealizadas);
-    }
-
-    public void agregarCompra(Venta venta){
-        if (venta == null){
-            throw new IllegalArgumentException("No se pueden agregar una compra nula");
-        }
-        this.comprasRealizadas.add(venta);
     }
 }

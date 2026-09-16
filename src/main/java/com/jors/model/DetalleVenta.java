@@ -17,6 +17,10 @@ public class DetalleVenta {
         this.precioUnitario = producto.getPrecio();
     }
 
+    public int getId(){
+        return id;
+    }
+
     public String getCodigoProducto(){
         return producto.getCodigo();
     }

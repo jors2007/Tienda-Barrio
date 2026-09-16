@@ -12,7 +12,7 @@ import com.jors.model.Cliente;
 import com.jors.model.Venta;
 
 public class VentaDAO {
-    public void insertar(Venta venta, Cliente cliente) throws SQLException{
+    public void realizarVentaCompleta(Venta venta, Cliente cliente) throws SQLException{
         String sql = "INSERT INTO venta (fecha, id_cliente) VALUES (?,?)";
         try (Connection con = ConexionDB.obtenerConexion();
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){

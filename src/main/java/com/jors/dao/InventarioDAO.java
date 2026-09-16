@@ -18,7 +18,7 @@ public class InventarioDAO {
             PreparedStatement ps = con.prepareStatement(sql,Statement.KEEP_CURRENT_RESULT)){
                 ps.setString(1,producto.getCodigo());
                 ps.setString(2,producto.getNombre());
-                ps.setDouble(3, producto.getPrecio());
+                ps.setBigDecimal(3, producto.getPrecio());
                 ps.setString(4,producto.getDescripcion());
                 ps.setString(5, producto.getCategoria().name());
                 ps.setInt(6, producto.getStock());
