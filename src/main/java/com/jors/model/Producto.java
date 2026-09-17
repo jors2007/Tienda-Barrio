@@ -45,7 +45,7 @@ public class Producto {
         this.stock -= cantidadVendida;
     }
 
-    public int getId(){
+    public Integer getId(){
         return id;
     }
 

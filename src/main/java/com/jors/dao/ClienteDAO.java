@@ -59,7 +59,10 @@ public class ClienteDAO {
         return clientes;
     }
 
-    public void actualizar(Cliente cliente){
+    public boolean actualizar(Cliente cliente) throws SQLException{
+        if (cliente.getId() == null){
+            throw new IllegalArgumentException("No se puede actualizar a un cliente que no tiene un ID asignado");
+        }
         String sql = """
                 UPTADE cliente SET
                 cedula = ?,
@@ -70,9 +73,31 @@ public class ClienteDAO {
                 direccion_secundaria = ?
                 WHERE id = ?
                 """;
+        try (Connection con = ConexionDB.obtenerConexion();
+            PreparedStatement ps = con.prepareStatement(sql)){
+                ps.setString(1,cliente.getCedula());
+                ps.setString(2,cliente.getNombre());
+                ps.setString(3,cliente.getApellido());
+                ps.setString(4,cliente.getCelular());
+                if (cliente.getDireccion() != null){
+                    ps.setString(5,cliente.getDireccionPrimaria());
+                    ps.setString(6,cliente.getDireccionSecundaria());
+                } else {
+                    ps.setNull(5, java.sql.Types.VARCHAR);
+                    ps.setNull(6, java.sql.Types.VARCHAR);
+                }
+                ps.setInt(7, cliente.getId());
+                int filasAfectadas = ps.executeUpdate();
+                return filasAfectadas > 0;
+        }
     }
 
     public void eliminar(Cliente cliente){
-
+        if (cliente.getId() == null){
+            throw new IllegalArgumentException("No se puede actualizar a un cliente que no tiene un ID asignado");
+        }
+        String sql = """
+            DETELE FROM cliente WHERE id = ?
+        """;
     }
 }

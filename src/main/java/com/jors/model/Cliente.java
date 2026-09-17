@@ -1,7 +1,5 @@
 package com.jors.model;
 
-import java.util.ArrayList;
-
 public class Cliente {
     private Integer id;
     private Cedula cedula;
@@ -29,7 +27,7 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public int getId(){
+    public Integer getId(){
         return id;
     }
 
@@ -55,6 +53,10 @@ public class Cliente {
 
     public String getDireccionSecundaria(){
         return direccion.getCalleSecundaria();
+    }
+
+    public Direccion getDireccion(){
+        return direccion;
     }
 
     public void setId(int id){
