@@ -39,11 +39,17 @@ public class InventarioDAO {
         return productos;
     }
 
-    public void actualizar(Producto producto){
+    public void actualizar(Producto producto) throws SQLException{
 
     }
 
-    public void eliminar(Producto producto){
-
+    public boolean eliminar(Producto producto) throws SQLException{
+        String sql = "DELETE FROM producto WHERE id = ?";
+        try(Connection con = ConexionDB.obtenerConexion();
+            PreparedStatement ps = con.prepareStatement(sql)){
+                ps.setInt(1, producto.getId());
+                int filasAfectada = ps.executeUpdate();
+                return filasAfectada > 0;
+        }
     }
 }
