@@ -8,6 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jors.model.Cedula;
+import com.jors.model.Celular;
+import com.jors.model.Cliente;
+import com.jors.model.Direccion;
 import com.jors.model.Producto;
 
 public class InventarioDAO {
@@ -30,12 +34,28 @@ public class InventarioDAO {
         }
     }
 
-        public List<Producto> obtenerTodas(){
+        public List<Producto> obtenerTodo() throws SQLException{
         List<Producto> productos = new ArrayList<>();
-
-
-
-        
+        String sql = """
+                SELECT 
+                id, codigo, nombre, precio, stock, catergoria, descripcion
+                FROM producto;
+                """;
+         try(Connection con = ConexionDB.obtenerConexion();
+            PreparedStatement ps = con.prepareStatement(sql)){
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    Producto producto = new Producto(rs.getInt("id"), 
+                        rs.getString("codigo"), 
+                        rs.getString("nombre"), 
+                        rs.getBigDecimal("precio"), 
+                        null, 
+                        sql, 
+                        0);
+                    productos.add(producto);
+                }
+            }
+        }
         return productos;
     }
 

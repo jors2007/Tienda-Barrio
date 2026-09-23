@@ -12,7 +12,7 @@ public class Producto {
     private int stock;
 
 
-    public Producto(String nombre, double precio, Categoria categoria, String descripcion,int stock){
+    public Producto(String nombre, BigDecimal precio, Categoria categoria, String descripcion,int stock){
         this.descripcion = descripcion;
         this.nombre = nombre;
         actualizarPrecio(precio);
@@ -20,7 +20,7 @@ public class Producto {
         this.stock = stock;
     }
 
-    public Producto(Integer id, String codigo, String nombre, double precio, Categoria categoria, String descripcion,int stock){
+    public Producto(Integer id, String codigo, String nombre, BigDecimal precio, Categoria categoria, String descripcion,int stock){
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -73,12 +73,11 @@ public class Producto {
         return stock;
     }
 
-    public final void actualizarPrecio(double precio) {
-        if (precio <= 0){
+    public final void actualizarPrecio(BigDecimal precio) {
+        if (precio.compareTo(BigDecimal.ZERO) <= 0){
             throw new IllegalArgumentException("No se pueden introducir precios negativos");
         }
-        BigDecimal precioDecimal = BigDecimal.valueOf(precio);
-        this.precio = precioDecimal;
+        this.precio = precio;
     }
 
     public void setId(int id){
