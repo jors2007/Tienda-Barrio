@@ -12,7 +12,7 @@ public class Producto {
     private int stock;
 
 
-    public Producto(String nombre, BigDecimal precio, Categoria categoria, String descripcion,int stock){
+    public Producto(String nombre, BigDecimal precio, int stock, Categoria categoria, String descripcion){
         this.descripcion = descripcion;
         this.nombre = nombre;
         actualizarPrecio(precio);
@@ -20,7 +20,7 @@ public class Producto {
         this.stock = stock;
     }
 
-    public Producto(Integer id, String codigo, String nombre, BigDecimal precio, Categoria categoria, String descripcion,int stock){
+    public Producto(Integer id, String codigo, String nombre, BigDecimal precio, int stock, Categoria categoria, String descripcion){
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;

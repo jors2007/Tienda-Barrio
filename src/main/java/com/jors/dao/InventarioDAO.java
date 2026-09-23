@@ -8,10 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jors.model.Cedula;
-import com.jors.model.Celular;
-import com.jors.model.Cliente;
-import com.jors.model.Direccion;
+import com.jors.model.Categoria;
 import com.jors.model.Producto;
 
 public class InventarioDAO {
@@ -34,7 +31,7 @@ public class InventarioDAO {
         }
     }
 
-        public List<Producto> obtenerTodo() throws SQLException{
+    public List<Producto> obtenerTodo() throws SQLException{
         List<Producto> productos = new ArrayList<>();
         String sql = """
                 SELECT 
@@ -45,13 +42,14 @@ public class InventarioDAO {
             PreparedStatement ps = con.prepareStatement(sql)){
             try(ResultSet rs = ps.executeQuery()){
                 while(rs.next()){
+                    Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
                     Producto producto = new Producto(rs.getInt("id"), 
                         rs.getString("codigo"), 
                         rs.getString("nombre"), 
                         rs.getBigDecimal("precio"), 
-                        null, 
-                        sql, 
-                        0);
+                        rs.getInt("stock"), 
+                        categoria, 
+                        rs.getString("descripcion"));
                     productos.add(producto);
                 }
             }
@@ -59,8 +57,30 @@ public class InventarioDAO {
         return productos;
     }
 
-    public void actualizar(Producto producto) throws SQLException{
+    public boolean actualizar(Producto producto) throws SQLException{
+        String sql ="""
+                UPTADE producto SET
+                codigo = ?,
+                nombre = ?,
+                precio = ?,
+                stock = ?,
+                categoria = ?,
+                descripcion = ?,
+                WHERE id = ?
+                """;
+        try(Connection con = ConexionDB.obtenerConexion();
+            PreparedStatement ps = con.prepareStatement(sql)){
+                ps.setString(1, producto.getCodigo());
+                ps.setString(2, producto.getNombre());
+                ps.setBigDecimal(3, producto.getPrecio());
+                ps.setInt(4, producto.getStock());
+                ps.setString(5,producto.getCategoria().name());
+                ps.setString(6, producto.getDescripcion());
+                ps.setInt(7, producto.getId());
 
+                int filasAfectadas = ps.executeUpdate();
+                return filasAfectadas > 0;
+            }
     }
 
     public boolean eliminar(Producto producto) throws SQLException{
